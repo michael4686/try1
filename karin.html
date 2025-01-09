@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for Karkora</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: glow 1.5s infinite alternate;
+            display: none; /* Hide initially */
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #ff9, 0 0 20px #ff9;
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff9, 0 0 30px #ff9;
+            }
+        }
+
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            background: #fff;
+            color: #2575fc;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: #ff9;
+            color: #2575fc;
+        }
+
+        .message {
+            display: none; /* Hide until button is clicked */
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes twinkle {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(2); }
+        }
+
+        .star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fff, 0 0 20px #ff9;
+            animation: twinkle 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 id="karkoraMessage" style="display: none;">27laaa Karkora fl dinia! 🌟</h1>
+        <button onclick="revealSurprise()">Click me for a surprise!</button>
+        <div class="message" id="surpriseMessage" style="display: none;">You're the star of the day! ✨</div>
+    </div>
+
+    <script>
+        function revealSurprise() {
+            // Reveal Karkora's greeting
+            const karkoraMessage = document.getElementById('karkoraMessage');
+            karkoraMessage.style.display = 'block';
+            karkoraMessage.style.animation = 'fade-in 1s forwards';
+
+            // Reveal the surprise message
+            const surpriseMessage = document.getElementById('surpriseMessage');
+            surpriseMessage.style.display = 'block';
+            surpriseMessage.style.animation = 'fade-in 1s forwards';
+        }
+
+        document.body.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${clientX}px`;
+            star.style.top = `${clientY}px`;
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 1000);
+        });
+    </script>
+</body>
+</html>
